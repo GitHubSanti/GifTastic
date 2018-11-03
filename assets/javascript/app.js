@@ -2,7 +2,7 @@ var giphy = {
   topics: ["Ford", "Chevy", "Jeep", "Toyota", "Honda", "Acura", "Lexus"],
   createButton: function(buttonText) {
     var buttonToAdd = $(
-      "<button class='btn btn-secondary m-2 buttonAdded' id='apiButton' type='button'>"
+      "<button class='btn btn-secondary m-2 buttonAdded' type='button'>"
     );
     // Set text to button
     buttonToAdd.text(buttonText);
@@ -59,17 +59,13 @@ $(document).ready(function() {
       // Create img elment to contain initially paused giphy
       var giphy = $("<img>");
       // Create label element to contain rating of giphy
-      var rating = $("");
-
-      // Creates row only when iterating thru first giphy of row
-      // if(numOfGiphysOnRow == 1){
-      //   var rowOfGiphys = $("<div class='d-flex flex-row text-center m-1'>");
-      // }
+      var rating = $("<label>");
 
       console.log(element.images.original_still.url);
       console.log(element.images.original.url);
       console.log(element.rating);
 
+      // Create giphy and corresponding attributes
       giphy.attr(
         "src",
         element.images.original_still.url.replace("https", "http")
@@ -85,8 +81,12 @@ $(document).ready(function() {
       giphy.attr("data-state", "still");
       giphy.attr("class", "giphy embed-responsive rounded");
 
+      // give label associated rating
+      rating.text(element.rating);
+
       // Append created giphy to div column created giphyCol
       giphyCol.append(giphy);
+      giphyCol.append(rating);
 
       // Append giphyCol to correct div (row1, row2, row3)
       if (numOfGiphysOnRow < 4) {
