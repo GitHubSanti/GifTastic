@@ -10,9 +10,15 @@ var giphy = {
         // Add event listener for click
         buttonToAdd.click(function() {
 			// Git rid of previous giphys
+<<<<<<< HEAD
 			 $(".col1").html("");
 			 $(".col2").html("");
 			 $(".col3").html("");
+=======
+			 $(".row1").html("");
+			 $(".row2").html("");
+			 $(".row3").html("");
+>>>>>>> b7f75c63792a72b0d3b3aa07b54d5d3dca6c23ed
 			
             console.log(buttonText.replace(" ", "+"));
             var carBrand = buttonText.replace(" ", "+");
@@ -29,12 +35,20 @@ var giphy = {
                 console.log(response);
 
                 var gifID = 0;
+<<<<<<< HEAD
                 var numOfGiphysOnCol = 1;
+=======
+                var numOfGiphysOnRow = 1;
+>>>>>>> b7f75c63792a72b0d3b3aa07b54d5d3dca6c23ed
 
                 // forEach function on data array of response received to loop thru items of interest (giphy and rating)
                 response.data.forEach(function(element) {
                     // Create div element column to contain giphy and rating
+<<<<<<< HEAD
                     var giphyCol = $("<div class='d-flex flex-column m-0'>");
+=======
+                    var giphyCol = $("<div class='d-flex flex-column m-2'>");
+>>>>>>> b7f75c63792a72b0d3b3aa07b54d5d3dca6c23ed
                     // Create img elment to contain initially paused giphy
                     var giphy = $("<img>");
                     // Create label element to contain rating of giphy
@@ -67,6 +81,7 @@ var giphy = {
                     giphyCol.append(giphy);
                     giphyCol.append(rating);
 
+<<<<<<< HEAD
                     // Append giphyCol to correct div (col1, col2, col3)
                     if (numOfGiphysOnCol < 4) {
                         $(".col1").append(giphyCol);
@@ -77,6 +92,18 @@ var giphy = {
                     }
                     console.log(numOfGiphysOnCol);
                     numOfGiphysOnCol++;
+=======
+                    // Append giphyCol to correct div (row1, row2, row3)
+                    if (numOfGiphysOnRow < 4) {
+                        $(".row1").append(giphyCol);
+                    } else if (numOfGiphysOnRow >= 4 && numOfGiphysOnRow < 7) {
+                        $(".row2").append(giphyCol);
+                    } else if (numOfGiphysOnRow >= 7 && numOfGiphysOnRow < 11) {
+                        $(".row3").append(giphyCol);
+                    }
+                    console.log(numOfGiphysOnRow);
+                    numOfGiphysOnRow++;
+>>>>>>> b7f75c63792a72b0d3b3aa07b54d5d3dca6c23ed
                 });
                 $(".giphy").on("click", function() {
                     console.log(this);
