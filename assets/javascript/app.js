@@ -9,6 +9,11 @@ var giphy = {
 
         // Add event listener for click
         buttonToAdd.click(function() {
+			// Git rid of previous giphys
+			 $(".col1").html("");
+			 $(".col2").html("");
+			 $(".col3").html("");
+			
             console.log(buttonText.replace(" ", "+"));
             var carBrand = buttonText.replace(" ", "+");
             // carBrand.trim().replace(" ","+");
@@ -24,12 +29,12 @@ var giphy = {
                 console.log(response);
 
                 var gifID = 0;
-                var numOfGiphysOnRow = 1;
+                var numOfGiphysOnCol = 1;
 
                 // forEach function on data array of response received to loop thru items of interest (giphy and rating)
                 response.data.forEach(function(element) {
                     // Create div element column to contain giphy and rating
-                    var giphyCol = $("<div class='d-flex flex-column m-2'>");
+                    var giphyCol = $("<div class='d-flex flex-column m-0'>");
                     // Create img elment to contain initially paused giphy
                     var giphy = $("<img>");
                     // Create label element to contain rating of giphy
@@ -56,22 +61,22 @@ var giphy = {
                     giphy.attr("class", "giphy embed-responsive rounded");
 
                     // give label associated rating
-                    rating.text(element.rating);
+                    rating.text("Rating: " + element.rating);
 
                     // Append created giphy to div column created giphyCol
                     giphyCol.append(giphy);
                     giphyCol.append(rating);
 
-                    // Append giphyCol to correct div (row1, row2, row3)
-                    if (numOfGiphysOnRow < 4) {
-                        $(".row1").append(giphyCol);
-                    } else if (numOfGiphysOnRow >= 4 && numOfGiphysOnRow < 7) {
-                        $(".row2").append(giphyCol);
-                    } else if (numOfGiphysOnRow >= 7 && numOfGiphysOnRow < 11) {
-                        $(".row3").append(giphyCol);
+                    // Append giphyCol to correct div (col1, col2, col3)
+                    if (numOfGiphysOnCol < 4) {
+                        $(".col1").append(giphyCol);
+                    } else if (numOfGiphysOnCol >= 4 && numOfGiphysOnCol < 7) {
+                        $(".col2").append(giphyCol);
+                    } else if (numOfGiphysOnCol >= 7 && numOfGiphysOnCol < 11) {
+                        $(".col3").append(giphyCol);
                     }
-                    console.log(numOfGiphysOnRow);
-                    numOfGiphysOnRow++;
+                    console.log(numOfGiphysOnCol);
+                    numOfGiphysOnCol++;
                 });
                 $(".giphy").on("click", function() {
                     console.log(this);
